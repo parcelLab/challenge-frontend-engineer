@@ -1,97 +1,211 @@
-# parcelLab Frontend Engineer Quest
-<img src="./fire.gif" />
-Welcome to the lost Repository of Frontend. You came a long way - join me around this campfire gif, make yourself a coffee and relax a bit - before you start your quest becoming a Frontend Engineer at parcelLab.
-Take your time and read this Markdown parchment carefully, it will help you navigate around the dangers of this task.
+# parcelLab — Order Compass (Challenge Scaffold)
 
-## The Quest
-<img src="./banner.jpg"  />
-At parcelLab we build tools that integrate with the worlds best online retailers and are used by millions of people - every day! That is why we are really into creating outstanding user experiences.
+- [parcelLab — Order Compass (Challenge Scaffold)](#parcellab--order-compass-challenge-scaffold)
+    - [📖 About the project and the use case](#-about-the-project-and-the-use-case)
+    - [⚙️ Technical overview and instructions for developing](#️-technical-overview-and-instructions-for-developing)
+        - [Prerequisites](#prerequisites)
+        - [Getting started](#getting-started)
+        - [Structure](#structure)
+        - [Mocked API](#mocked-api)
+        - [Notes](#notes)
+    - [🏗️ Solving the Challenge and Rules to follow](#️-solving-the-challenge-and-rules-to-follow)
+        - [IMPORTANT: Time limit](#important-time-limit)
+        - [Use of AI and coding agents](#use-of-ai-and-coding-agents)
+        - [1️⃣ Overall goal](#1️⃣-overall-goal)
+        - [2️⃣ Backlog tasks to choose from](#2️⃣-backlog-tasks-to-choose-from)
+            - [FR-001 Complete the computed status heuristic](#fr-001-complete-the-computed-status-heuristic)
+            - [FR-002 Improve a11y/perf, improve test coverage](#fr-002-improve-a11yperf-improve-test-coverage)
+            - [DEF-001 Fix the failing test and related type errors](#def-001-fix-the-failing-test-and-related-type-errors)
+            - [FR-003 Optional ZIP input to disclose additional order and tracking information](#fr-003-optional-zip-input-to-disclose-additional-order-and-tracking-information)
+            - [FR-004 UX improvement: show articles included in the order](#fr-004-ux-improvement-show-articles-included-in-the-order)
+            - [FR-005 UX improvement: enhance the order details page](#fr-005-ux-improvement-enhance-the-order-details-page)
+            - [FR-006 Clearly show the user the current status and the next action (for them or the carrier)](#fr-006-clearly-show-the-user-the-current-status-and-the-next-action-for-them-or-the-carrier)
+            - [DEF-002 Orders with two tracking numbers show only one tracking timeline](#def-002-orders-with-two-tracking-numbers-show-only-one-tracking-timeline)
+            - [OPEN-001 Surprise us](#open-001-surprise-us)
+        - [3️⃣ Deliverables](#3️⃣-deliverables)
 
-In this scenario, you are Frontend Engineer at parcelLab and you start working on a new project of building a web app that displays the order status and the shipping information for orders. Because your fellow backend developer colleague is late with his part, you will need to mock an api that returns one order from a list of orders ```orders.json``` based on the user's input and display it in a appealing way.  
+## 📖 About the project and the use case
 
-The api that you mock will be (when finished) hosted on ```https://api.prcl.dev``` and the endpoints URL will look something like that: ```/orders/{{orderNumber}}?zip={{zipCode}}```. You can use any tool you like for mocking the api.  
+This is a synthetic project to evaluate your frontend engineering skills. It simulates a real world scenario that you
+might encounter when working at parcelLab. We want to see how you approach the task, how you structure your code and how
+you implement the requirements.
 
-The app should have 2 views:
-1. Sign In / User Input view - here the user can input an order number and a zip code (for verification - so that it is not possible to get access to order information without knowing the zip code of it) and a submit button. If the entered order number does not exist in the DB (orders.json) or the zip code does not match, you can show a error here as a notification or on a new page. Your choice.
-2. Order View - after the user typed in a valid order number that exists in the DB, user will land on this page. It should view the order details and the shipping (in parcelLab lang "tracking") information.
+The use case is an order tracking application that allows users to look up their order status using an order number and
+zip code. Once the order is found, the user should be able to see detailed information about the order, including its
+current status, checkpoints, and delivery information.
 
-This is how this could look like:
+> Please do not fork this repository. Clone it, work locally, and submit either as (non-forked) repository or a zip file.
 
-<img src="./mock-1.png" style="width:100%;background-color:white;margin-bottom:15px;" />
-<img src="./mock-2.png" style="width:100%;background-color:white;" />
+## ⚙️ Technical overview and instructions for developing
 
+Modern FE scaffold: **Vite + React + TypeScript + Tailwind (shadcn‑style)**, **MSW** for the mocked API, **Vitest** for
+unit tests, and **Biome** for lint/format.
 
-Remember these are only mockups. At parcelLab we expect from our frontend engineers to have a feeling for good UI/UX and give them the freedom of creation. You can design these views as you would like. Make sure to make use of the data that you see in the order.json file! What makes sense to show to the user?
+> This is **starter** code to build an order tracking application. It includes the lookup page, a bare Order Details
+> page, a mocked API, design tokens, and might **contain bugs**.
 
+### Prerequisites
 
-## Our Expectations
-You might be wondering after reading the scenario, how much effort and time we expect you to invest in this task. We know that you likely have a job, a life, further open job applications and other things that require some of your valuable time. Therefore we do not expect you to spend more than around 4 hours on this task.  
+- Node.js 20.x or higher
+- pnpm 9.x
 
-Just for you to have a understanding about the scope we expect, here a list for each level you might be applying for:
+### Getting started
 
-### Junior Developer:
-- your application works without the need of modifications
-- you use Javascript OR Typescript + React
-- someone looking at the code knows what you tried to accomplish because you stick with the "Clean Code" principles
+```bash
+# install (pnpm preferred, but npm/yarn work too)
+pnpm install
 
-### Midlevel Developer:
-- all of the above plus:
-- you use Typescript
-- your UI is looking clean
-- you show your react hooks skills
-- the code base is "Clean Code" by the book
+# run dev
+pnpm dev
 
-### Senior Developer:
-- all of the above plus:
-- your UI is following best UX practices
-- show us your Testing knowledge
-- your Typescript have all the correct Typings and you do not use things like "any"
+# run tests
+pnpm test
 
-### Want to earn some bonus points:
-- you care about accessibility
+# typecheck, lint & format
+pnpm typecheck
+pnpm lint
+pnpm format
+```
 
-<img src="./banner2.jpg" />
+Open <http://localhost:5173> and try a valid order like **0000RTAB3** with zip **81371**.
 
-## Data Source
-> ☝ Please do **not** edit the content of the file. It's up to you, how you want to mock the required api endpoint.
+### Structure
 
-- [data/orders.json](./data/orders.json)
+```bash
+src/
+  analytics/track.ts      # no-op tracker
+  components/ui/*         # shadcn-style primitives (Button, Card, ...)
+  components/Timeline.tsx # simple timeline
+  components/OrderHeader.tsx
+  lib/status.ts           # computed status heuristic (simplified)
+  lib/format.ts           # date formatting helpers
+  mocks/handlers.ts       # MSW mock: GET /orders/:orderNumber?zip=
+  mocks/browser.ts        # MSW worker
+  routes/Lookup.tsx       # lookup form
+  routes/OrderDetails.tsx # details view (uses router state)
+  styles/globals.css      # tailwind + CSS variables
+  types/order.ts          # data types
+data/shipments.json       # provided dataset
+tests/*                   # vitest specs
+```
 
-### orders.json
-This file represents a subset of an orders DB with orders of different customers. Each order contains information that you  can use to display in the UI.  
-> ⚠️ not all attributes can be filled with data - make sure to handle this scenario.
+### Mocked API
 
-If you open the `orders.json` file you will see it contains multiple entries with following properties:
+- **Endpoint:** `GET /orders/:orderNumber?zip=:zipCode`
+- Returns `404` if order not found, `403` if zip mismatch, `200` with the order otherwise.
+- Implemented via **MSW**; no server needed in dev.
 
-- `_id` - order id from the db
-- `courier` - courier code that is delivering this order package
-- `created` - db record creating date
-- `updated` - db record last update date
-- `updated` - db record last update date
-- `checkpoints` - list of checkpoints from the shippment process - tip: can include a `meta` field with further information about the shippment status / location
-- `delivery_info` - object with order detail data like recipient infos and `articles` list
-- `delivery_info.announced_delivery_date` - first estimation of the delivery date made by the sender
-- `destination_country_iso3` - 3 char code of the recpients country
-- `zip_code` - zip code of the recipient - should be used in combindation with order number as verification
+### Notes
 
-There is even more data available. Just have a look into orders.json and think of how and what you can display to the user.
+- The shadcn CLI config (`components.json`) is included; you can also generate more components if desired.
+- **Biome** replaces ESLint + Prettier (see `biome.json`).
 
-## What you will need
-For setting up the web app you can just set up a standard React project (with e.g. CRA or any other tooling). You can use any module, design system or state management you like and structure the application in your favor.
+## 🏗️ Solving the Challenge and Rules to follow
 
-You can simple clone this repository and send us a link to your fork.  
+### IMPORTANT: Time limit
 
-## In the end you should have
-- [ ]  a mocked api endpoint so that you can create the data fetching logic
-- [ ]  web app that has 2 or 3 views
-    - [ ]  input / signin form
-    - [ ]  order detail view
-    - [ ]  error page - optional (depends how you want to display errors)
+> 💡 we want to have a fair playing field for all applicants. Therefore we kindly ask you to NOT spend more than **4
+hours** on this challenge. If you reach the time limit, please stop working on it and send us what you have. We will
+> evaluate your submission based on what you have done so far and also take into consideration that you had a limited
+> time budget.
+>
+> We value very much good time management and transparency and prefer working code over unfinished 'perfect' solutions.
 
+### Use of AI and coding agents
 
-## What really makes us happy 😍
-- [ ]  You provide us with a README.md that explains how we can run your app
-- [ ]  Your code is well structured, clean and readable
-- [ ]  You add comments and documentation, if your code isn't self-explanatory
-- [ ]  You handle any common errors that could occur
-- [ ]  You use automated tests where appropriate
+You are allowed to use AI tools and coding agents to help you solve the challenge in both code and documentation.
+If you chose to do so, please document any AI usage in the provided `AI_LOG.md` file so we can understand how you
+instructed AI to help you solve the challenge. Just dumping the conversation in there is fine, we are mainly interested
+in how you prompted and verified the outputs.
+> IMPORTANT: once you ship whatever was created either by you or by the llm/agent it is YOUR CODE and your
+> responsibility to make sure it is correct, secure and follows best practices.
+
+### 1️⃣ Overall goal
+
+Pick from the tasks below to improve the project according to your time budget and priorities.
+
+### 2️⃣ Backlog tasks to choose from
+
+You are free to choose which tasks to implement from the list below. You do NOT have to implement all of them. Pick the ones
+that you think are most relevant to showcase your skills within the given time budget and prioritise them from your
+perspective based on impact on user experience and business value.
+Imagine these are **not yet in a prioritised** list - they were just added to the backlog by various stakeholders and
+you can pick and order them as you see fit. Choose wisely and justify your choices in the `DECISIONS.md` file.
+
+#### FR-001 Complete the computed status heuristic
+
+This is an important part for usability and user experience. The current implementation is simplified and does not cover
+all cases. Improve the `lib/status.ts` to cover more edge cases and provide a more accurate status computation based on
+the order's checkpoints and delivery information.
+
+#### FR-002 improve a11y/perf, improve test coverage
+
+Make sure all code and css is WCAG accessibility act compliant as required by law and best practices. Improve
+performance for mobile devices which are the majority of users. Optimise for lighthouse and Google performance
+criteria. Add more unit/integration tests to cover edge cases and make sure the code is robust. Achieve 100% test
+coverage for all new and existing code. This is preparation for the audit in 2 months.
+
+#### DEF-001 Fix the failing test and related type errors
+
+There is a failing unit test and some TypeScript errors. Identify the root cause, fix the issues, and ensure all tests pass.
+
+#### FR-003 Optional ZIP input to disclose additional order and tracking information
+
+Currently the zip-code in the lookup is required to submit. We should make that optional and display only basic tracking
+information when no zip-code is provided. That also makes the order details page accessible without zip-code, but only
+with limited information and by calling the url with just the order-number (e.g. `/order/0000RTAB1`). If the ZIP code is
+provided the page shall display all information relevant to the recipient and the goods in the order.
+
+#### FR-004 UX improvement: show articles included in the order
+
+Our customers (e-commerce shops) want to provide their end-customers with more transparency about what is included in
+the order. Therefore we want to show the articles included in the order on the order details page. Please enhance the
+order details page to include a section that lists all articles in the order, including their name, quantity, and any
+other relevant information available in the order data. Ideally, include images if available. Links to the article
+detail page on the shop's website would make a good addition as well.
+
+#### FR-005 UX improvement: enhance the order details page
+
+The order details page is functional but bare-bones. Improve the user experience by enhancing the visual design,
+information hierarchy, and overall usability. Consider what information is most important to a user tracking their
+package and how to present it effectively. You have creative freedom here — show us how you would make this page
+delightful and informative for end users.
+
+#### FR-006 Clearly show the user the current status and the next action (for them or the carrier)
+
+we have a computed status, but it is not very visible in the UI. Improve the order details page to prominently display
+the current status (e.g. "In Transit", "Out for Delivery", "Delivered") and what the user can expect next (e.g. "
+Expected delivery tomorrow", "Action required: Please contact carrier"). Or if no action is required, show that clearly
+as well.
+Add a short human‑readable explanation under the computed status (e.g., “Your parcel left the local depot at 08:12 and
+is expected on Tue”).
+
+Implement a rule‑based explainer function and an evaluation harness (/evaluation/explainer.spec.ts) with 4–6 cases.
+
+#### DEF-002 Orders with two tracking numbers show only one tracking timeline
+
+There is a bug in the order details page when an order has two tracking numbers (e.g. from different carriers).
+Currently only one timeline is shown, which can be confusing for users. Fix the bug to ensure that both timelines are
+displayed correctly, allowing users to see the full tracking information for their order. Should be easy.
+
+#### OPEN-001 Surprise us
+
+Is there something you'd love to add, improve, or experiment with? A small feature, a polish detail, a clever
+integration, or just something that makes you proud? This is your chance to show off your creativity and initiative.
+No constraints — just make sure to document your reasoning in `DECISIONS.md`.
+
+### 3️⃣ Deliverables
+
+> **Important**: Do NOT fork this repository. Clone it, work locally, and submit as described below.
+
+A zip file or link to your own private repository containing:
+
+- [ ] Working code that is error-free, type-safe, and well-structured
+- [ ] Commits in small, readable steps — avoid a single "monster" commit
+- [ ] A log of all AI prompts and outputs you used (if any) in `AI_LOG.md`
+- [ ] A brief summary of your design decisions and implementation notes in `DECISIONS.md`
+
+---
+
+© parcelLab — May your commits be atomic and your parcels always delivered.
+
